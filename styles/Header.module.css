@@ -1,0 +1,18 @@
+.navbar {
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.link, .logo {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
