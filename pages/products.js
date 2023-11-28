@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import homeStyles from "../styles/Home.module.css";
+import productStyles from "../styles/Products.module.css";
 
 // For fetching external data
 export const getStaticProps = async () => {
@@ -14,24 +15,30 @@ export const getStaticProps = async () => {
 
 const Products = ({ products }) => {
   return (
-    <div className={styles.content}>
+    <div className={homeStyles.content}>
       <Head>
         <title>Products</title>
       </Head>
       <h1>Products</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti
-        hic fugiat quidem beatae suscipit nostrum saepe dolore deserunt
-        cupiditate, inventore ut perferendis excepturi itaque amet dolor rerum
-        sequi adipisci.
-      </p>
-      {products.map((product) => (
-        <Link href={`/products/${product.id}`} key={product.id}>
-          <a>
-            <h2>{product.title}</h2>
-          </a>
-        </Link>
-      ))}
+      <div className={productStyles.products}>
+        {products.map((product) => (
+          <div className={productStyles.product} key={product.id}>
+            <Link href={`/products/${product.id}`}>
+              <a>
+                <div>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className={productStyles.productImg}
+                  />
+
+                  <h5 className={productStyles.productTitle}>{product.title}</h5>
+                </div>
+              </a>
+            </Link>
+            </div>
+        ))}
+      </div>
     </div>
   );
 };

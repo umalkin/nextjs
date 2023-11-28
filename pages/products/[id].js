@@ -1,6 +1,8 @@
 // To generate pages and routes based on ids of products
 
-import Head from 'next/head'
+import Head from "next/head";
+import stylesHome from "../../styles/Home.module.css";
+import stylesProduct from "../../styles/Product.module.css";
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
@@ -19,29 +21,46 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-    const id = context.params.id
+  const id = context.params.id;
 
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-    const data = await res.json();
-  
-    return {
-      props: { product: data },
-    };
+  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const data = await res.json();
+
+  return {
+    props: { product: data },
   };
+};
 
-const Product = ({product}) => {
+const Product = ({ product }) => {
   return (
-    <div>
+    <div className={stylesHome.content}>
       <Head>
         <title>{product.title}</title>
       </Head>
-      <h2>Product</h2>
-      <img src={product.image} alt={product.title} />
-      <h4>{product.title}</h4>
-      <h5>US$ {product.price}</h5>
-      <p>{product.description}</p>
+      <div>
+        <div className={stylesProduct.productDisplay}>
+          <div>
+            <img
+              src={product.image}
+              alt={product.title}
+              className={stylesProduct.productImg}
+            />
+          </div>
+          <div className={stylesProduct.productSell}>
+            <h4>{product.title}</h4>
+            <h4>US$ {product.price}</h4>
+            <div className={stylesProduct.buttons}>
+            <button className={stylesProduct.button}>
+              Add to Favorite
+            </button>
+            <button className={stylesProduct.button}>Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p className={stylesProduct.desc}>{product.description}</p>
     </div>
   );
 };
 
-export default Product
+export default Product;

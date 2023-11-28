@@ -1,9 +1,9 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 const Contact = () => {
   return (
-    <div className={styles.content}>
+    <div className={homeStyles.content}>
       <Head>
         <title>Contact</title>
       </Head>

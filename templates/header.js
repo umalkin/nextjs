@@ -3,9 +3,10 @@ import styles from "../styles/Header.module.css";
 
 const Header = () => {
   return (
+    <div className={styles.fixed}>
     <div className={styles.navbar}>
       <Link href="/">
-        <h1 className={styles.logo}>LOGO</h1>
+        <img src='/logo.svg' className={styles.logo} />
       </Link>
       <nav className={styles.links}>
         <Link href="/">
@@ -18,6 +19,7 @@ const Header = () => {
           <a className={styles.link}>Contact</a>
         </Link>
       </nav>
+    </div>
     </div>
   );
 };
